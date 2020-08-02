@@ -1,9 +1,9 @@
 package com.kyotoyx.petclinic.services.map;
 
 import com.kyotoyx.petclinic.model.Pet;
-import com.kyotoyx.petclinic.services.CrudService;
+import com.kyotoyx.petclinic.services.PetService;
 
-public class PetServiceMap extends AbstractMapService<Pet, Long> implements CrudService<Pet, Long> {
+public class PetServiceMap extends AbstractMapService<Pet, Long> implements PetService {
 
     @Override
     public Pet save(Pet object) {
