@@ -14,7 +14,7 @@
 	</parent>
 	<groupId>com.kyotoyx</groupId>
 	<artifactId>petclinic</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>petclinic</name>
 	<description>Pet Clinic Application</description>
 
@@ -41,6 +41,7 @@
 
 	<scm>
 		<developerConnection>scm:git:https://github.com/kyotoyx/pet-clinic.git</developerConnection>
+    <tag>petclinic-0.0.1</tag>
   </scm>
 
 </project>
