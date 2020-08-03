@@ -1,16 +1,25 @@
 package com.kyotoyx.petclinic.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import com.kyotoyx.petclinic.model.BaseEntity;
 
-public class AbstractMapService<T, ID> {
+import java.util.*;
 
-    private Map<ID, T> map = new HashMap<>();
+public class AbstractMapService<T extends BaseEntity, ID extends Long> {
 
-    public T save(ID id, T object) {
-        map.put(id, object);
+    private Map<Long, T> map = new HashMap<>();
+
+    public T save(T object) {
+
+        if (object != null) {
+            if (object.getId() == null) {
+                object.setId(getNextId());
+            }
+
+            map.put(object.getId(), object);
+        } else {
+            throw new RuntimeException("Object should not be null");
+        }
+
         return object;
     }
 
@@ -28,5 +37,17 @@ public class AbstractMapService<T, ID> {
 
     public void deleteById(ID id) {
         map.remove(id);
+    }
+
+    private Long getNextId() {
+        Long id = null;
+
+        try {
+            id = Collections.max(map.keySet()) + 1;
+        } catch (NoSuchElementException e) {
+            id = 1L;
+        }
+
+        return id;
     }
 }
