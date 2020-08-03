@@ -1,6 +1,6 @@
 package com.kyotoyx.petclinic.model;
 
-public class Specialty {
+public class Specialty extends BaseEntity {
 
     private String description;
 
