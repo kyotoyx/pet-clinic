@@ -10,4 +10,9 @@ public class IndexPageController {
     public String indexPage() {
         return "index";
     }
+
+    @RequestMapping("/oups")
+    public String oupsHandler() {
+        return "notimplemented";
+    }
 }
