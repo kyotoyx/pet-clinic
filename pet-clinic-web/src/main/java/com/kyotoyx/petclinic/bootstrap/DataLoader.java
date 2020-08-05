@@ -1,10 +1,7 @@
 package com.kyotoyx.petclinic.bootstrap;
 
 import com.kyotoyx.petclinic.model.*;
-import com.kyotoyx.petclinic.services.OwnerService;
-import com.kyotoyx.petclinic.services.PetTypeService;
-import com.kyotoyx.petclinic.services.SpecialtyService;
-import com.kyotoyx.petclinic.services.VetService;
+import com.kyotoyx.petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -94,6 +93,15 @@ public class DataLoader implements CommandLineRunner {
         ownerService.save(owner2);
 
         System.out.println("Owners Loaded...");
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(yxpet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("New born cat");
+
+        visitService.save(catVisit);
+
+        System.out.println("Visits Loaded...");
 
         Vet vet1 = new Vet();
 
