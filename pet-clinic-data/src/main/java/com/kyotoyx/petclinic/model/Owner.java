@@ -18,7 +18,7 @@ public class Owner extends Person {
         super(id, firstName, lastName);
         this.address = address;
         this.city = city;
-        this.telphone = telphone;
+        this.telephone = telphone;
         this.pets = pets;
     }
 
@@ -29,7 +29,7 @@ public class Owner extends Person {
     private String city;
 
     @Column(name = "telphone")
-    private String telphone;
+    private String telephone;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "owner")
     private Set<Pet> pets = new HashSet<>();
